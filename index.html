@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>EB Bill Calculator</title>
+</head>
+<body class="bg-gray-800">
+
+    <body class="p-5 md:p-10 text-gray-800">
+        <!-- Home -->
+        <section class=" rounded-2xl p-5 mb-10">
+          <div class="container mx-auto">
+            <div class="flex border-r">
+                <div>
+                    <img src="images/WhatsApp Image 2023-09-17 at 3.39.58 AM.jpeg" alt="" width="100" height="100">
+                  </div>
+             
+              <div class="my-auto">
+                <button class="lg:hidden" onclick="menuClick()">
+                    
+                </button>
+              </div>  
+              <div class="pl-5 my-auto">
+                <button class="lg:hidden" onclick="menuClick()">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+                  </svg>
+                </button>
+                <ul class="hidden lg:flex font-bold text-gray-600">
+                  <li class="pr-5"><a class="px-3 py-2 border border-purple-100 hover:border-purple-300 rounded"
+                      href="">Blogs</a>
+                  </li>
+                  <li class="pr-5"><a class="px-3 py-2 border border-purple-100 hover:border-purple-300 rounded"
+                      href="">Projects</a>
+                  </li>
+                  <li class="pr-5"><a class="px-3 py-2 border border-purple-100 hover:border-purple-300 rounded"
+                      href="">Services</a>
+                  </li>
+                  <li class="pr-5"><a class="px-3 py-2 border border-purple-100 hover:border-purple-300 rounded"
+                      href="">Portfolio</a>
+                  </li>
+                  <li class="pr-5"><a class="px-3 py-2 border border-purple-100 hover:border-purple-300 rounded"
+                      href="">Contact</a>
+                  </li>
+                </ul>
+              </div>
+              
+        </section>
+    
+    
+
+    <section class="  rounded-2xl p-5 mb-10">
+        <div class="bg-black-200 container mx-20 w-200 ">
+          <div class="py-16 lg:py-28 justify-center">
+            <h2 class="text-center text-3xl lg:text-5xl font-bold ">
+              TNEB Bill Calculator
+            </h2>
+            
+          </div>
+          <div class="flex flex-wrap pb-16 pb-28 justify-center">
+            <div class="w-full lg:w-1/2 py-5 lg:p-5">
+              <div class=" p-5 rounded-2xl shadow-lg">
+                
+            
+                <div id="wrapper">
+                    <h2 class="text-white">EB Bill Calculator</h2>
+                    <div class="inputdiv p-5">
+                        <input type="text" id="input" placeholder="Units">
+                    </div>
+                    <div class="p-3">
+                        <button class="h-12 px-6 m-2  text-lg text-indigo-100 transition-colors duration-150 bg-gray-700 rounded-lg focus:shadow-outline " type="submit" onclick="ebBill()">Calculate</button>
+                    </div>
+                    <div id="result">
+                       
+                    </div>
+                </div>
+                
+              </div>
+            </div>
+
+
+    
+    
+    <script>
+      function ebBill(){
+        const units = Number(document.getElementById("input").value)
+        let rate = 0
+        
+        if(units<=100){
+            rate = units*0
+        }
+            
+        else if(units>100 && units<=200){
+            rate = 100*0 + (units-100)*2.25
+        }
+            
+       
+        else if(units>200 && units<=400){
+            rate = 100*0 + (200-100)*2.25 + (units-200)*4.5
+        }
+            
+        else if(units>400 && units<=500){
+            rate = 100*0 + (200-100)*2.25 + (400-200)*4.5 + (units - 400)*6
+        }
+        //Above 500
+        else if(units>500 && units<=600){
+            rate = 100*0 + (300)*4.5 + (500-400)*6 + ((units - 500)*8)
+        }
+        else if(units>600 && units<=800){
+            rate = 100*0 + (300)*4.5 + (500-400)*6 + (600 - 500)*8 + (units - 600)*9
+        }
+        else if(units>800 && units<=1000){
+            rate = 100*0 + (300)*4.5 + (500-400)*6 + (600 - 500)*8 + (800 - 600)*9 + (units - 800)*10
+        }
+        else{
+            rate = 100*0 + (300)*4.5 + (500-400)*6 + (600 - 500)*8 + (800 - 600)*9 + (1000 - 800)*10 + (units - 1000)*11
+        }
+        let result = document.querySelector('#result')
+        result.innerHTML = "Bill Amount RS."+ rate +""
+      }
+    </script>
+</body>
